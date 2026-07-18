@@ -1,13 +1,14 @@
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="container">
+
+      <div className="container nav-container">
 
         <h2 className="logo">
-          Johnard
+          Johnard<span>.</span>
         </h2>
 
-        <ul className="nav-links">
+        <ul className="nav-menu">
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -17,6 +18,7 @@ function Navbar() {
         </ul>
 
       </div>
+
     </nav>
   );
 }

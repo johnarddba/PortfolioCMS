@@ -1,29 +1,61 @@
 function Hero() {
-  return (
-    <section id="hero">
 
-      <div className="container hero">
+    return (
 
-        <h1>
-          Johnard Hidalgo
-        </h1>
+<section id="hero" className="hero">
 
-        <h3>
-          Senior Database Administrator
-        </h3>
+<div className="container hero-content">
 
-        <p>
-          SQL Server • AWS • Azure • PostgreSQL • Automation
-        </p>
+<div className="hero-left">
 
-        <button>
-          View Projects
-        </button>
+<h3>Hello 👋 I'm</h3>
 
-      </div>
+<h1>Johnard Hidalgo</h1>
 
-    </section>
-  );
+<h2>Senior Database Administrator</h2>
+
+<p>
+
+SQL Server • AWS • Azure • PostgreSQL • Python • Terraform
+
+</p>
+
+<div className="hero-buttons">
+
+<button className="btn">
+
+Download Resume
+
+</button>
+
+<button className="btn-outline">
+
+Contact Me
+
+</button>
+
+</div>
+
+</div>
+
+<div className="hero-right">
+
+<img
+
+src="https://i.pravatar.cc/400"
+
+alt="profile"
+
+/>
+
+</div>
+
+</div>
+
+</section>
+
+);
+
 }
 
 export default Hero;

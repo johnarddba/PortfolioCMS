@@ -1,26 +1,48 @@
 function Skills() {
-  return (
-    <section id="skills">
 
-      <div className="container">
+const skills=[
+"SQL Server",
+"Azure SQL",
+"AWS",
+"PostgreSQL",
+"MySQL",
+"Python",
+"Terraform",
+"PowerShell",
+"Git",
+"React"
+];
 
-        <h2>Skills</h2>
+return(
 
-        <ul>
-          <li>SQL Server</li>
-          <li>Azure SQL</li>
-          <li>AWS</li>
-          <li>PostgreSQL</li>
-          <li>Terraform</li>
-          <li>Ansible</li>
-          <li>PowerShell</li>
-          <li>Python</li>
-        </ul>
+<section id="skills" className="skills">
 
-      </div>
+<div className="container">
 
-    </section>
-  );
+<h2 className="section-title">
+Technical Skills
+</h2>
+
+<div className="skills-grid">
+
+{skills.map((skill,index)=>
+
+<div className="skill-card" key={index}>
+
+{skill}
+
+</div>
+
+)}
+
+</div>
+
+</div>
+
+</section>
+
+)
+
 }
 
 export default Skills;

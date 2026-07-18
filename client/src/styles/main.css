@@ -2,6 +2,10 @@
 @import "./navbar.css";
 @import "./hero.css";
 @import "./responsive.css";
+@import "./about.css";
+@import "./contact.css";
+@import ".footer.css";    
+
 
 *{
     margin:0;

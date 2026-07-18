@@ -1,0 +1,37 @@
+#experience{
+
+padding:120px 0;
+
+background:#101d3d;
+
+}
+
+.timeline{
+
+display:flex;
+
+flex-direction:column;
+
+gap:30px;
+
+}
+
+.timeline-item{
+
+background:#15244a;
+
+padding:30px;
+
+border-left:5px solid #00d9ff;
+
+border-radius:8px;
+
+transition:.3s;
+
+}
+
+.timeline-item:hover{
+
+transform:translateX(10px);
+
+}

@@ -14,7 +14,7 @@ return(
 
 <p>
 
-Senior Database Administrator | AWS Certified Cloud Practitioner
+Senior Database Administrator | AWS Certified Cloud Practitioner | ITIL
 
 </p>
 

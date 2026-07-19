@@ -16,7 +16,7 @@ Experience
 
 <div className="timeline-item">
 
-<h3>Senior Database Administrator</h3>
+<h3>Senior Engineer I - Database Services</h3>
 
 <h4>HedgeServ</h4>
 
@@ -26,9 +26,9 @@ Experience
 
 <div className="timeline-item">
 
-<h3>Database Administrator</h3>
+<h3>SeniorDatabase Administrator</h3>
 
-<h4>Previous Company</h4>
+<h4>Deltek</h4>
 
 <p>2015 - 2022</p>
 
@@ -36,9 +36,9 @@ Experience
 
 <div className="timeline-item">
 
-<h3>Junior Database Administrator</h3>
+<h3>Database Administrator</h3>
 
-<h4>Earlier Career</h4>
+<h4>Salmat Digital</h4>
 
 <p>2012 - 2015</p>
 

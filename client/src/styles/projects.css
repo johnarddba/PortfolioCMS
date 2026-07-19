@@ -2,15 +2,19 @@
 
 padding:120px 0;
 
+background:#0d1630;
+
 }
 
 .project-grid{
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
 
 gap:30px;
+
+margin-top:50px;
 
 }
 
@@ -18,11 +22,19 @@ gap:30px;
 
 background:#15244a;
 
-padding:30px;
-
 border-radius:15px;
 
+padding:30px;
+
 transition:.3s;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:space-between;
+
+min-height:280px;
 
 }
 
@@ -30,46 +42,52 @@ transition:.3s;
 
 transform:translateY(-10px);
 
+box-shadow:0 12px 30px rgba(0,0,0,.3);
+
 }
 
 .project-card h3{
 
-margin-bottom:15px;
-
 color:#00d9ff;
+
+margin-bottom:15px;
 
 }
 
 .project-card p{
 
-margin-bottom:20px;
-
 line-height:1.7;
 
-}
-
-.project-card span{
-
-display:block;
-
-margin-bottom:25px;
-
-color:#b6c6e3;
+margin-bottom:15px;
 
 }
 
-.project-card button{
+.project-actions{
 
-padding:12px 30px;
+margin-top:auto;
+
+}
+
+.project-actions a{
 
 background:#00d9ff;
 
-border:none;
+padding:12px 24px;
 
 color:white;
 
+text-decoration:none;
+
 border-radius:8px;
 
-cursor:pointer;
+display:inline-block;
+
+transition:.3s;
+
+}
+
+.project-actions a:hover{
+
+background:#00b7d6;
 
 }

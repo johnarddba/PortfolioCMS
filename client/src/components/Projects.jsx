@@ -3,64 +3,118 @@ import api from "../services/api";
 
 function Projects() {
 
-const [projects,setProjects]=useState([]);
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
-useEffect(()=>{
+    useEffect(() => {
+        loadProjects();
+    }, []);
 
-loadProjects();
+    async function loadProjects() {
 
-},[]);
+        try {
 
-function loadProjects(){
+            const response = await api.get("/projects");
 
-api.get("/projects")
+            setProjects(response.data.data);
 
-.then(res=>{
+        } catch (err) {
 
-setProjects(res.data);
+            console.error(err);
 
-});
+            setError("Unable to load projects.");
 
-}
+        } finally {
 
-return(
+            setLoading(false);
 
-<section id="projects">
+        }
 
-<div className="container">
+    }
 
-<h2>Projects</h2>
+    if (loading)
+        return (
+            <section id="projects" className="projects">
+                <div className="container">
+                    <h2>Loading Projects...</h2>
+                </div>
+            </section>
+        );
 
-<div className="project-grid">
+    if (error)
+        return (
+            <section id="projects" className="projects">
+                <div className="container">
+                    <h2>{error}</h2>
+                </div>
+            </section>
+        );
 
-{
+    return (
 
-projects.map(project=>
+        <section id="projects" className="projects">
 
-<div
-className="project-card"
-key={project.id}
->
+            <div className="container">
 
-<h3>{project.title}</h3>
+                <h2 className="section-title">
+                    Featured Projects
+                </h2>
 
-<p>{project.description}</p>
+                <div className="project-grid">
 
-<p>{project.technology}</p>
+                    {projects.length === 0 ? (
 
-</div>
+                        <p>No projects found.</p>
 
-)
+                    ) : (
 
-}
+                        projects.map((project) => (
 
-</div>
+                            <div
+                                className="project-card"
+                                key={project.id}
+                            >
 
-</div>
+                                <h3>{project.title}</h3>
 
-</section>
+                                <p>{project.description}</p>
 
-);
+                                <p>
+                                    <strong>Technology:</strong>
+                                    <br />
+                                    {project.technology}
+                                </p>
+
+                                <div className="project-actions">
+
+                                    {project.github && (
+
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            GitHub
+                                        </a>
+
+                                    )}
+
+                                </div>
+
+                            </div>
+
+                        ))
+
+                    )}
+
+                </div>
+
+            </div>
+
+        </section>
+
+    );
 
 }
 

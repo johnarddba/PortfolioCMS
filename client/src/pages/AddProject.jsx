@@ -1,35 +1,96 @@
-function AddProject() {
-  return (
-    <div className="container">
+import { useState } from "react";
+import api from "../services/api";
 
-      <h1>Add New Project</h1>
+function AddProject(){
 
-      <form>
+const [project,setProject]=useState({
 
-        <input
-          placeholder="Project Title"
-        />
+title:"",
 
-        <textarea
-          placeholder="Description"
-        />
+description:"",
 
-        <input
-          placeholder="Technology"
-        />
+technology:"",
 
-        <input
-          placeholder="GitHub URL"
-        />
+github:""
 
-        <button>
-          Save Project
-        </button>
+});
 
-      </form>
+function handleChange(e){
 
-    </div>
-  );
+setProject({
+
+...project,
+
+[e.target.name]:e.target.value
+
+});
+
+}
+
+async function saveProject(e){
+
+e.preventDefault();
+
+await api.post("/projects",project);
+
+alert("Project Saved!");
+
+}
+
+return(
+
+<form onSubmit={saveProject}>
+
+<input
+
+name="title"
+
+placeholder="Title"
+
+onChange={handleChange}
+
+/>
+
+<textarea
+
+name="description"
+
+placeholder="Description"
+
+onChange={handleChange}
+
+/>
+
+<input
+
+name="technology"
+
+placeholder="Technology"
+
+onChange={handleChange}
+
+/>
+
+<input
+
+name="github"
+
+placeholder="Github"
+
+onChange={handleChange}
+
+/>
+
+<button>
+
+Save
+
+</button>
+
+</form>
+
+);
+
 }
 
 export default AddProject;

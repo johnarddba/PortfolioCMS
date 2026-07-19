@@ -2,28 +2,16 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
+const controller = require("../controllers/projectController");
 
-res.json([
+router.get("/", controller.getProjects);
 
-{
+router.get("/:id", controller.getProject);
 
-id:1,
+router.post("/", controller.createProject);
 
-title:"Portfolio CMS"
+router.put("/:id", controller.updateProject);
 
-},
-
-{
-
-id:2,
-
-title:"SQL Server Monitoring"
-
-}
-
-]);
-
-});
+router.delete("/:id", controller.deleteProject);
 
 module.exports = router;

@@ -1,49 +1,67 @@
-const projects = [
-  {
-    title: "SQL Server Monitoring Dashboard",
-    description:
-      "Real-time monitoring dashboard using SQL Server DMVs, Power BI, and Python.",
-    tech: "SQL Server • Power BI • Python",
-  },
-  {
-    title: "Portfolio CMS",
-    description:
-      "A full-stack portfolio website built with React, Express, and SQLite.",
-    tech: "React • Express • SQLite",
-  },
-  {
-    title: "AWS SQL Automation",
-    description:
-      "Automated SQL Server deployment using Terraform and PowerShell.",
-    tech: "AWS • Terraform • PowerShell",
-  },
-];
+import { useEffect, useState } from "react";
+import api from "../services/api";
 
 function Projects() {
-  return (
-    <section id="projects" className="projects">
-      <div className="container">
 
-        <h2 className="section-title">
-          Featured Projects
-        </h2>
+const [projects,setProjects]=useState([]);
 
-        <div className="project-grid">
-          {projects.map((project, index) => (
-            <div className="project-card" key={index}>
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
+useEffect(()=>{
 
-              <span>{project.tech}</span>
+loadProjects();
 
-              <button>View Project</button>
-            </div>
-          ))}
-        </div>
+},[]);
 
-      </div>
-    </section>
-  );
+function loadProjects(){
+
+api.get("/projects")
+
+.then(res=>{
+
+setProjects(res.data);
+
+});
+
+}
+
+return(
+
+<section id="projects">
+
+<div className="container">
+
+<h2>Projects</h2>
+
+<div className="project-grid">
+
+{
+
+projects.map(project=>
+
+<div
+className="project-card"
+key={project.id}
+>
+
+<h3>{project.title}</h3>
+
+<p>{project.description}</p>
+
+<p>{project.technology}</p>
+
+</div>
+
+)
+
+}
+
+</div>
+
+</div>
+
+</section>
+
+);
+
 }
 
 export default Projects;

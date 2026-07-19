@@ -1,21 +1,101 @@
-import { Link } from "react-router-dom";
+import { useEffect,useState } from "react";
 
-function Dashboard() {
-  return (
-    <div className="container">
+import api from "../services/api";
 
-      <h1>Portfolio Dashboard</h1>
+function Dashboard(){
 
-      <Link to="/projects/new">
-        Add Project
-      </Link>
+const [projects,setProjects]=useState([]);
 
-      <hr />
+useEffect(()=>{
 
-      <p>Your projects will appear here.</p>
+load();
 
-    </div>
-  );
+},[]);
+
+function load(){
+
+api.get("/projects")
+
+.then(res=>{
+
+setProjects(res.data);
+
+});
+
+}
+
+async function remove(id){
+
+await api.delete("/projects/"+id);
+
+load();
+
+}
+
+return(
+
+<div className="container">
+
+<h1>
+
+Dashboard
+
+</h1>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Title</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{
+
+projects.map(project=>
+
+<tr key={project.id}>
+
+<td>{project.title}</td>
+
+<td>
+
+<button>Edit</button>
+
+<button
+
+onClick={()=>remove(project.id)}
+
+>
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+)
+
+}
+
+</tbody>
+
+</table>
+
+</div>
+
+);
+
 }
 
 export default Dashboard;

@@ -1,77 +1,141 @@
-const db = require("../database/database");
+const Project = require("../models/projectModel");
 
+// GET ALL
 exports.getProjects = (req, res) => {
-    db.all("SELECT * FROM projects ORDER BY id DESC", [], (err, rows) => {
+
+    Project.getAll((err, rows) => {
+
         if (err) {
-            return res.status(500).json(err);
+
+            return res.status(500).json({
+                success: false,
+                message: err.message
+            });
+
         }
 
         res.json(rows);
+
     });
+
 };
 
+// GET ONE
 exports.getProject = (req, res) => {
-    db.get(
-        "SELECT * FROM projects WHERE id=?",
-        [req.params.id],
-        (err, row) => {
-            if (err) return res.status(500).json(err);
 
-            res.json(row);
+    Project.getById(req.params.id, (err, row) => {
+
+        if (err) {
+
+            return res.status(500).json({
+                success: false,
+                message: err.message
+            });
+
         }
-    );
+
+        res.json(row);
+
+    });
+
 };
 
+// CREATE
 exports.createProject = (req, res) => {
-    const { title, description, technology, github } = req.body;
 
-    db.run(
-        `
-        INSERT INTO projects(title,description,technology,github)
-        VALUES(?,?,?,?)
-        `,
-        [title, description, technology, github],
-        function (err) {
-            if (err) return res.status(500).json(err);
+    Project.create(req.body, function(err){
 
-            res.json({
-                message: "Project created",
-                id: this.lastID,
+        if(err){
+
+            return res.status(500).json({
+                success:false,
+                message:err.message
             });
+
         }
-    );
+
+        res.status(201).json({
+
+            success:true,
+
+            id:this.lastID,
+
+            message:"Project created"
+
+        });
+
+    });
+
 };
 
-exports.updateProject = (req, res) => {
-    const { title, description, technology, github } = req.body;
+// UPDATE
+exports.updateProject = (req,res)=>{
 
-    db.run(
-        `
-        UPDATE projects
-        SET title=?,description=?,technology=?,github=?
-        WHERE id=?
-        `,
-        [title, description, technology, github, req.params.id],
-        function (err) {
-            if (err) return res.status(500).json(err);
+    Project.update(
+
+        req.params.id,
+
+        req.body,
+
+        function(err){
+
+            if(err){
+
+                return res.status(500).json({
+
+                    success:false,
+
+                    message:err.message
+
+                });
+
+            }
 
             res.json({
-                message: "Project updated",
+
+                success:true,
+
+                message:"Project updated"
+
             });
+
         }
+
     );
+
 };
 
-exports.deleteProject = (req, res) => {
-    db.run(
-        "DELETE FROM projects WHERE id=?",
-        [req.params.id],
-        function (err) {
-            if (err) return res.status(500).json(err);
+// DELETE
+exports.deleteProject=(req,res)=>{
+
+    Project.delete(
+
+        req.params.id,
+
+        function(err){
+
+            if(err){
+
+                return res.status(500).json({
+
+                    success:false,
+
+                    message:err.message
+
+                });
+
+            }
 
             res.json({
-                message: "Project deleted",
+
+                success:true,
+
+                message:"Project deleted"
+
             });
+
         }
+
     );
+
 };

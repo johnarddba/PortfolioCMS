@@ -1,4 +1,4 @@
-const db = require("./database");
+const db = require("../config/database");
 
 db.serialize(() => {
 
@@ -23,5 +23,19 @@ image TEXT
 `);
 
 console.log("Projects table created.");
+
+db.run(`
+INSERT INTO projects
+(title,description,technology,github,image)
+
+VALUES
+(
+'Portfolio CMS',
+'Full Stack Portfolio',
+'React, Node, SQLite',
+'https://github.com/johnarddba/PortfolioCMS',
+''
+)
+`);
 
 });

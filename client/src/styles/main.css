@@ -1,36 +1,58 @@
-@import "./variables.css";
-@import "./navbar.css";
-@import "./hero.css";
-@import "./responsive.css";
-@import "./about.css";
-@import "./contact.css";
-@import "./footer.css";    
-
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
 
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:
+    Inter,
+    Segoe UI,
+    Arial,
+    sans-serif;
 
-    background:#0f172a;
+    background:var(--background);
 
-    color:white;
+    color:var(--text);
+
+    line-height:1.6;
 }
 
-.container{
+a{
 
-    width:90%;
+    text-decoration:none;
 
-    max-width:1200px;
+    color:var(--primary);
 
-    margin:auto;
+}
+
+img{
+
+    max-width:100%;
+
+}
+
+.btn{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:12px 24px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:var(--primary-hover);
+
 }

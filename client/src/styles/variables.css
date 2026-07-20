@@ -1,8 +1,29 @@
 :root {
-  --primary-color: #00d9ff;
-  --secondary-color: #091224;
-  --background-color: #0d1630;
-  --text-color: #ffffff;
-  --container-width: 1200px;
-  --transition: all 0.3s ease;
+
+  /* Primary */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  /* Background */
+  --background: #f4f7fb;
+  --surface: #ffffff;
+
+  /* Text */
+  --text: #1f2937;
+  --text-light: #6b7280;
+
+  /* Borders */
+  --border: #e5e7eb;
+
+  /* Status */
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  /* Shadow */
+  --shadow: 0 8px 25px rgba(0,0,0,.08);
+
+  /* Radius */
+  --radius: 14px;
+
 }

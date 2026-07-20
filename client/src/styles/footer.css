@@ -1,17 +1,13 @@
-.footer{
+footer{
 
-padding:40px 0;
+    background:white;
 
-text-align:center;
+    border-top:1px solid var(--border);
 
-background:#091224;
+    padding:40px;
 
-}
+    text-align:center;
 
-.footer p{
-
-margin:8px;
-
-color:#d0d7e8;
+    color:var(--text-light);
 
 }
